@@ -1,0 +1,84 @@
+/* ---------- shared ---------- */
+.hint { color: $text-muted; padding: 0 1 1 1; }
+.h { text-style: bold; color: $accent; padding: 1 1 0 1; }
+.frow { height: 1; padding: 0 1; }
+.flabel { width: 28; height: 1; padding: 0 1 0 0; color: $text-muted; text-wrap: nowrap; text-overflow: ellipsis; }
+.frow Input, .frow Select { width: 1fr; }
+.frow Switch { height: 1; border: none; padding: 0 1; margin: 0; }
+.optgrid { grid-size: 2; grid-gutter: 0 2; grid-rows: 1; height: auto; margin: 1 0; }
+.optgrid .wide { column-span: 2; }
+.dialog .frow { height: 3; }
+.dialog .flabel { height: 3; padding-top: 1; }
+.dialog .frow Input, .dialog .frow Select { height: 3; }
+.buttons-row { height: auto; padding: 1 1 0 1; }
+.buttons-row Button { margin-right: 2; }
+.short { height: 8; }
+.pane { padding: 0 1; }
+.pane DataTable { height: 12; margin: 1 1 0 1; }
+.pane DataTable.short { height: 8; }
+.pane Static { padding: 0 1; }
+.pane .hint, .pane .h { padding-left: 1; }
+Collapsible { margin: 1 1 0 1; }
+Input { margin: 0; }
+
+/* ---------- home ---------- */
+#home { align: center middle; height: 1fr; }
+#banner { width: 100%; content-align: center middle; text-align: center; color: $primary; text-style: bold; height: 8; padding-top: 1; }
+#tagline { width: 100%; text-align: center; color: $text-muted; height: 2; }
+#tiles { grid-size: 2 2; grid-gutter: 1 2; width: 78; height: 24; }
+.tile { border: heavy $primary 60%; background: $panel; content-align: center middle; text-align: center; height: 100%; padding: 0 2; }
+.tile:hover { background: $boost; border: heavy $accent; }
+.tile:focus { border: heavy $accent; background: $boost; }
+#home-foot { height: 3; width: 78; margin-top: 1; }
+.foot-link { width: 1fr; text-align: center; padding: 1 0; background: $panel; margin: 0 1; }
+.foot-link:hover { background: $boost; }
+#home-info { width: 100%; text-align: center; height: 2; color: $text-muted; }
+
+/* ---------- workspace ---------- */
+#topbar { height: 1; background: $primary; color: $text; dock: top; }
+#top-left { width: 1fr; padding: 0 1; text-style: bold; }
+#top-right { width: auto; padding: 0 1; }
+#body { height: 1fr; }
+#left { width: 34; border-right: tall $primary 40%; }
+#right { width: 44; border-left: tall $primary 40%; }
+#center { width: 1fr; }
+.panel-title { background: $panel; color: $accent; text-style: bold; padding: 0 1; height: 1; }
+#info { padding: 0 1; }
+#log { height: 8; border-top: tall $primary 40%; background: $surface; padding: 0 1; }
+#status { height: 1; background: $panel; }
+#st-left { width: 1fr; padding: 0 1; }
+#st-mid { width: auto; padding: 0 1; }
+#st-bar { width: 24; padding: 0; }
+#st-right { width: auto; padding: 0 1; }
+#st-bar Bar { width: 100%; }
+TabbedContent { height: 1fr; }
+TabPane { padding: 0; }
+Tab.-disabled { text-style: dim strike; }
+
+/* ---------- modals ---------- */
+ModalScreen { align: center middle; background: $background 60%; }
+.dialog { width: 78; height: auto; max-height: 90%; background: $surface; border: heavy $accent; padding: 1 2; }
+.dialog.small { width: 60; }
+.dialog.wide { width: 96%; height: 90%; }
+.dialog-text { padding: 0 0 1 0; }
+.buttons { height: auto; align: center middle; padding-top: 1; }
+.buttons Button { margin: 0 2; }
+#plan-table { height: 1fr; margin: 0; }
+#plan-progress { margin: 1 0; width: 100%; }
+
+/* ---------- settings ---------- */
+#set-top { height: 3; padding: 1 2; background: $primary; }
+#set-body { height: 1fr; }
+#set-nav { width: 26; border-right: tall $primary 40%; }
+#set-switch { width: 1fr; }
+.set-sec { padding: 0 2; }
+.set-help { padding-top: 1; }
+#set-buttons { height: 5; align: center middle; background: $panel; }
+#set-buttons Button { margin: 0 2; }
+
+/* ---------- bin ---------- */
+#bin-top { height: 3; padding: 1 2; background: $primary; }
+#bin-summary { padding: 1 2; }
+#bin-table { height: 1fr; margin: 0 2; }
+#bin-buttons { height: 5; align: center middle; background: $panel; }
+#bin-buttons Button { margin: 0 2; min-width: 28; height: 3; }

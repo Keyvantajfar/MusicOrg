@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "musicorg"
+version = "0.1.0"
+description = "Music library organizer: de-duplicate, fix artwork, organize into Artist/Album folders, sync to devices. Terminal UI."
+requires-python = ">=3.11"
+dependencies = ["mutagen>=1.47", "textual>=0.80", "rich-pixels>=3.0", "Pillow>=10"]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-asyncio"]
+
+[project.scripts]
+musicorg = "musicorg.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["musicorg*"]
+
+[tool.setuptools.package-data]
+"musicorg.tui" = ["*.tcss"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
