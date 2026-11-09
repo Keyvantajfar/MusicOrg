@@ -31,6 +31,27 @@ def app(cfg, lib):
     return MusicOrgApp(cfg)
 
 
+async def test_home_arrows_follow_their_direction_and_clamp_at_edges(app):
+    async with app.run_test(size=(180, 50)) as pilot:
+        await pilot.pause()
+        # grid:  all(00) cleanup(01) / organize(10) device(11)
+        async def step(key, expect):
+            await pilot.press(key)
+            await pilot.pause(0.1)
+            assert app.focused.wid == expect, f"{key} -> {app.focused.wid}, wanted {expect}"
+        app.screen.query_one("#tile-organize").focus()
+        await pilot.pause(0.1)
+        await step("up", "all")            # 10 up -> 00 (used to land on 01)
+        await step("up", "all")            # top edge: stays put
+        await step("left", "all")          # left edge: stays put
+        await step("right", "cleanup")
+        await step("right", "cleanup")     # right edge: no bounce back
+        await step("down", "device")       # 01 down -> 11
+        await step("down", "device")       # bottom edge: stays put
+        await step("left", "organize")     # 11 left -> 10
+        await step("up", "all")
+
+
 async def test_home_and_workspace(app):
     async with app.run_test(size=(180, 50)) as pilot:
         await pilot.pause()

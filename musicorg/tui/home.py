@@ -59,8 +59,10 @@ class HomeScreen(Screen):
         Binding("3", "open('organize')", "Organize"), Binding("4", "open('device')", "Device sync"),
         Binding("s", "app.open_settings", "Settings"), Binding("b", "app.open_bin", "Recycle bin"),
         Binding("q", "app.quit", "Quit"),
-        Binding("right,down", "next", show=False), Binding("left,up", "prev", show=False),
+        Binding("right", "move(0,1)", show=False), Binding("left", "move(0,-1)", show=False),
+        Binding("down", "move(1,0)", show=False), Binding("up", "move(-1,0)", show=False),
     ]
+    COLS = 2     # must match `grid-size` of #tiles in styles.tcss
 
     def compose(self) -> ComposeResult:
         with Vertical(id="home"):
@@ -112,8 +114,17 @@ class HomeScreen(Screen):
         from .workspace import WorkspaceScreen
         self.app.push_screen(WorkspaceScreen(wid))
 
-    def action_next(self) -> None:
-        self.focus_next()
-
-    def action_prev(self) -> None:
-        self.focus_previous()
+    def action_move(self, drow: int, dcol: int) -> None:
+        """Arrow keys move in their own direction across the tile grid; at an edge they stay put (no wrap, no bounce)."""
+        ids = list(WORKFLOWS)
+        focused = self.focused
+        if not isinstance(focused, Tile):
+            return
+        row, col = divmod(ids.index(focused.wid), self.COLS)
+        rows = -(-len(ids) // self.COLS)
+        row, col = row + drow, col + dcol
+        if not (0 <= row < rows and 0 <= col < self.COLS):
+            return
+        j = row * self.COLS + col
+        if j < len(ids):
+            self.query_one(f"#tile-{ids[j]}").focus()
