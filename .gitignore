@@ -1,0 +1,21 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python bytecode
+*.pyc
+*.pyo
+
+# pytest
+.pytest_cache/
+
+# Type checkers / linters
+.mypy_cache/
+.ruff_cache/
+.pyright/
+
+# Coverage
+.coverage
+.coverage.*
+htmlcov/
